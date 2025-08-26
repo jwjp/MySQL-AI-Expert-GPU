@@ -1,0 +1,22 @@
+# LLM 및 파인튜닝 관련
+transformers
+datasets
+accelerate
+bitsandbytes
+peft
+trl
+
+# RAG 및 데이터 처리 관련
+langchain
+sentence-transformers
+chromadb
+pypdf
+
+# API 서버 및 UI 관련
+fastapi
+uvicorn[standard]
+streamlit
+requests
+
+# 1. pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+# 2. pip install -r requirements.txt --no-deps
