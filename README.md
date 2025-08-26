@@ -1,0 +1,2 @@
+# TAIL
+Today AI Learned 🤖
