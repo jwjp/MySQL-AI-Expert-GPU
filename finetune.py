@@ -67,13 +67,21 @@ training_arguments = TrainingArguments(
 )
 
 # 7. SFTTrainer 설정
+
+def formatting_func(example):
+    # example has key "messages" (list of dicts with role/content)
+    # Convert to chat template text suitable for SFT
+    return tokenizer.apply_chat_template(
+        example["messages"], tokenize=False, add_generation_prompt=False
+    )
+
 trainer = SFTTrainer(
     model=model,
     train_dataset=dataset,
     peft_config=peft_config,
-    # dataset_text_field="messages",
-    # max_seq_length=None,
+    formatting_func=formatting_func,
     # tokenizer=tokenizer,
+    # max_seq_length=2048,
     args=training_arguments,
     # packing=False,
 )

@@ -210,3 +210,8 @@ __marimo__/
 mysql-expert-llama-3-8b
 results
 db
+data/*
+!data/finetune_data.jsonl
+!data/mysql-8.0-en.pdf
+!data/mysql-errors-8.0-en.pdf
+!data/mysql-8.0-relnotes-en.pdf

@@ -19,7 +19,7 @@ langchain-huggingface
 langchain-chroma
 sentence-transformers
 chromadb
-pypdf
+pymupdf
 
 # API 서버 및 UI 관련
 fastapi
