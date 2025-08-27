@@ -1,4 +1,9 @@
+--extra-index-url https://download.pytorch.org/whl/cu126
+
 # LLM 및 파인튜닝 관련
+# torch
+# torchvision
+# torchaudio
 transformers
 datasets
 accelerate
@@ -8,6 +13,10 @@ trl
 
 # RAG 및 데이터 처리 관련
 langchain
+langchain-community
+langchain-text-splitters
+langchain-huggingface
+langchain-chroma
 sentence-transformers
 chromadb
 pypdf
@@ -17,6 +26,7 @@ fastapi
 uvicorn[standard]
 streamlit
 requests
+tqdm
 
 # 1. pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 # 2. pip install -r requirements.txt --no-deps
