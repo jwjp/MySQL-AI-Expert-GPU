@@ -41,7 +41,8 @@ This will:
 - The LoRA adapter is saved to `mysql-expert-llama-3-8b/`
 
 ## Run the backend API
-- python -m uvicorn main:app --host 0.0.0.0 --port 8000
+- python -m uvicorn main:app --host 127.0.0.1 --port 8000
+- The API has no authentication, so keep it on the loopback address.
 
 Endpoint:
 - POST /ask with JSON {"query": "your question"}

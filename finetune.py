@@ -12,9 +12,11 @@ import os
 
 # 1. 모델 및 토크나이저 설정
 base_model_id = "beomi/Llama-3-Open-Ko-8B"
+# 검증한 모델 버전으로 고정 (모델 저장소가 변경되어도 같은 파일을 사용)
+base_model_revision = "a8e8214f79f0d2cea817020a93dca48e8a6be18b"
 new_model_name = "mysql-expert-llama-3-8b" # 파인튜닝 후 저장될 모델 이름
 
-tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(base_model_id, revision=base_model_revision)
 tokenizer.pad_token = tokenizer.eos_token # 패딩 토큰 설정
 
 # 2. 4비트 양자화 설정 (메모리 절약)
@@ -28,6 +30,7 @@ bnb_config = BitsAndBytesConfig(
 # 3. 기반 모델 로드
 model = AutoModelForCausalLM.from_pretrained(
     base_model_id,
+    revision=base_model_revision,
     quantization_config=bnb_config,
     device_map="auto" # GPU 자동 할당
 )

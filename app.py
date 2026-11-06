@@ -2,7 +2,7 @@
 #   0. .\venv\Scripts\activate 가상 환경 활성화
 #   1. python ingest.py 실행하여 지식 데이터베이스(db 폴더) 생성 (최초 1회)
 #   2. python finetune.py 실행하여 맞춤형 AI 어댑터(mysql-expert-llama-3-8b 폴더) 생성 (최초 1회)
-#   3. uvicorn main:app --reload --host 0.0.0.0 --port 8000 실행하여 백엔드 API 서버 시작
+#   3. uvicorn main:app --reload --host 127.0.0.1 --port 8000 실행하여 백엔드 API 서버 시작
 #   4. streamlit run app.py 실행하여 프론트엔드 웹 UI 시작
 
 import streamlit as st

@@ -11,6 +11,8 @@ from langchain.prompts import PromptTemplate
 # 파인튜닝된 모델 어댑터 경로
 adapter_path = "./mysql-expert-llama-3-8b"
 base_model_id = "beomi/Llama-3-Open-Ko-8B"
+# 검증한 모델 버전으로 고정 (모델 저장소가 변경되어도 같은 파일을 사용)
+base_model_revision = "a8e8214f79f0d2cea817020a93dca48e8a6be18b"
 
 # 4비트 양자화 설정 (추론 시에도 메모리 절약)
 bnb_config = BitsAndBytesConfig(
@@ -22,12 +24,13 @@ bnb_config = BitsAndBytesConfig(
 # 기반 모델 로드
 base_model = AutoModelForCausalLM.from_pretrained(
     base_model_id,
+    revision=base_model_revision,
     quantization_config=bnb_config,
     device_map="auto"
 )
 
 # 토크나이저 로드
-tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(base_model_id, revision=base_model_revision)
 tokenizer.pad_token = tokenizer.eos_token
 
 # 파인튜닝된 LoRA 어댑터 결합
@@ -148,4 +151,4 @@ def ask_question(request: QueryRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
